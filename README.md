@@ -8,7 +8,7 @@ This is a prebuilt Ubuntu LTS image for [toolbox](https://docs.fedoraproject.org
 
 ## pre-requisites
 
-- a properly configured installation of [podman](https://podman.io/) **(preferred)** or docker ([install](https://docs.docker.com/engine/install/), [post-install](https://docs.docker.com/engine/install/linux-postinstall/))
+- a properly configured installation of [podman](https://podman.io/) **(preferred)** or [docker](https://www.docker.com/) ([install](https://docs.docker.com/engine/install/), [post-install](https://docs.docker.com/engine/install/linux-postinstall/))
 - a working (and updated) installation of [distrobox](https://distrobox.privatedns.org/), see: [distrobox supported container images](https://distrobox.privatedns.org/compatibility.html#supported-container-managers)
 
 ## usage (with distrobox)
