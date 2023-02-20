@@ -4,7 +4,7 @@ This is a prebuilt Ubuntu LTS image for [Toolbox](https://docs.fedoraproject.org
 
 - The image is built based off the [Ubuntu 22.04 Toolbx Community Image](https://github.com/toolbx-images/images)
 
-# usage (with distrobox)
+## usage (with distrobox)
 
 Create the distrobox:
 
@@ -25,3 +25,7 @@ distrobox-export --app pcoip-client
 ```
 
 You should now have an application in your desktop applications list called `PCoIP Client (on pcoip-bx)`.
+
+## acknowledgements
+
+[Jorge Castro](https://github.com/castrojo), his work on [ublue-os][https://github.com/ublue-os] and specifically [boxkit](https://github.com/ublue-os/boxkit).
