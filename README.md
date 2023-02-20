@@ -9,7 +9,7 @@ This is a prebuilt Ubuntu LTS image for [Toolbox](https://docs.fedoraproject.org
 Create the distrobox:
 
 ```bash
-distrobox create --image create --image ghcr.io/fossrob/pcoip-bx:latest --name pcoip-bx
+distrobox create --pull --image create --image ghcr.io/fossrob/pcoip-bx:latest --name pcoip-bx
 ```
 
 Enter the distrobox:
