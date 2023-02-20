@@ -1,3 +1,11 @@
 apt-transport-https
+bc
 ca-certificates
+dialog
 gnupg
+libegl1-mesa
+libgl1-mesa-glx
+libvte-2.9[0-9]-common
+libvte-common
+libvulkan1
+mesa-vulkan-drivers
