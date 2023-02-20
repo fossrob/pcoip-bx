@@ -41,6 +41,17 @@ You can execute the application from the commandline with:
 distrobox enter pcoip-bx -- pcoip-client
 ```
 
+### updating
+
+The image builds on a weekly schedule, but after deploying can be updated by distrobox itself.
+
+Outside of the distrobox (i.e. on the "host"):
+
+```bash
+distrobox upgrade pcoip-bx
+```
+
 ## acknowledgements
 
-[Jorge Castro](https://github.com/castrojo), his work on [ublue-os](https://github.com/ublue-os) and specifically [boxkit](https://github.com/ublue-os/boxkit).
+- [Jorge Castro](https://github.com/castrojo), his work on [ublue-os](https://github.com/ublue-os) and specifically [boxkit](https://github.com/ublue-os/boxkit).
+- [Luca Di Maio](https://github.com/89luca89), for the incredible work creating [distrobox](https://github.com/89luca89/distrobox).
