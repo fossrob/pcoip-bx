@@ -28,6 +28,14 @@ distrobox-export --app pcoip-client
 
 You should now have an application in your desktop applications list called `PCoIP Client (on pcoip-bx)`.
 
+### running manually
+
+You can execute the application from the commandline with:
+
+```bash
+distrobox enter pcoip-bx -- pcoip-client
+```
+
 ## acknowledgements
 
 [Jorge Castro](https://github.com/castrojo), his work on [ublue-os][https://github.com/ublue-os] and specifically [boxkit](https://github.com/ublue-os/boxkit).
