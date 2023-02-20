@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: build-bx
+name: build-pcoip-bx
 
 # Controls when the workflow will run
 on:
@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: bx
+  IMAGE_NAME: pcoip-bx
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
