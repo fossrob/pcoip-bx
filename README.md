@@ -2,9 +2,14 @@
 
 [![build-pcoip-bx](https://github.com/fossrob/pcoip-bx/actions/workflows/build.yml/badge.svg)](https://github.com/fossrob/pcoip-bx/actions/workflows/build.yml)
 
-This is a prebuilt Ubuntu LTS image for [Toolbox](https://docs.fedoraproject.org/en-US/fedora-silverblue/toolbox/) and [Distrobox](https://distrobox.privatedns.org/), with the [HP Anyware Software Client](https://docs.teradici.com/find/product/hp-anyware/2023.01/software-client-for-linux) pre-installed.
+This is a prebuilt Ubuntu LTS image for [toolbox](https://docs.fedoraproject.org/en-US/fedora-silverblue/toolbox/) and [distrobox](https://distrobox.privatedns.org/), with the [HP Anyware Software Client](https://docs.teradici.com/find/product/hp-anyware/2023.01/software-client-for-linux) pre-installed.
 
 - The image is built based off the [Ubuntu 22.04 Toolbx Community Image](https://github.com/toolbx-images/images)
+
+## pre-requisites
+
+- a properly configured installation of [podman](https://podman.io/) **(preferred)** or [docker](https://docs.docker.com/engine/install/)
+- a working (and updated) installation of [distrobox](https://distrobox.privatedns.org/), see: [distrobox supported container images](https://distrobox.privatedns.org/compatibility.html#supported-container-managers)
 
 ## usage (with distrobox)
 
