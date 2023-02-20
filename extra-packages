@@ -1,6 +1,7 @@
 apt-transport-https
 bc
 dialog
+libcanberra-gtk3-module
 libegl1-mesa
 libgl1-mesa-glx
 libvte-2.9[0-9]-common
