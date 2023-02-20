@@ -1,4 +1,4 @@
-# pcoip-x
+# pcoip-bx
 
 [![build-pcoip-bx](https://github.com/fossrob/pcoip-bx/actions/workflows/build.yml/badge.svg)](https://github.com/fossrob/pcoip-bx/actions/workflows/build.yml)
 
