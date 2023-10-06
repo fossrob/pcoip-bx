@@ -2,42 +2,48 @@
 
 [![build-pcoip-bx](https://github.com/fossrob/pcoip-bx/actions/workflows/build.yml/badge.svg)](https://github.com/fossrob/pcoip-bx/actions/workflows/build.yml)
 
-This is a prebuilt Ubuntu LTS image for [toolbox](https://docs.fedoraproject.org/en-US/fedora-silverblue/toolbox/) and [distrobox](https://distrobox.privatedns.org/), with the [HP Anyware Software Client](https://docs.teradici.com/find/product/hp-anyware/2023.01/software-client-for-linux) pre-installed.
+These are prebuilt Ubuntu LTS images for use with [toolbox](https://docs.fedoraproject.org/en-US/fedora-silverblue/toolbox/) and [distrobox](https://distrobox.it/), with the [HP Anyware Software Client](https://docs.teradici.com/find/product/software-and-mobile-clients) pre-installed.
 
-- The image is built based off the [Ubuntu 22.04 Toolbx Community Image](https://github.com/toolbx-images/images)
+- The images are based off the [Ubuntu Toolbx Community Images](https://github.com/toolbx-images/images)
 
 ## pre-requisites
 
-- a properly configured installation of [podman](https://podman.io/) **(preferred)** or [docker](https://www.docker.com/) ([install](https://docs.docker.com/engine/install/), [post-install](https://docs.docker.com/engine/install/linux-postinstall/))
-- a working (and updated) installation of [distrobox](https://distrobox.privatedns.org/), see: [distrobox supported container images](https://distrobox.privatedns.org/compatibility.html#supported-container-managers)
+- A properly configured installation of [podman](https://podman.io/) **(strongly preferred)** or [docker](https://www.docker.com/) ([install](https://docs.docker.com/engine/install/), [post-install](https://docs.docker.com/engine/install/linux-postinstall/))
+- A working (and updated) installation of [distrobox](https://distrobox.it/), see: [distrobox supported container images](https://distrobox.it/compatibility/#supported-container-managers)
+
+## version matrix
+
+| ubuntu | pcoip   | status             | default |
+| -------| --------| ------------------ | ------- |
+| 22.04  | 23.08.1 | ❌ fails to launch |         |
+| 22.04  | 23.06.2 | ✅ working         | ⭐️      |
+| 20.04  | 23.08.1 | ❌ fails to launch |         |
+| 20.04  | 23.06.2 | ✅ working         |         |
+
+⭐️ _This version will be installed if you use_ `pcoip-bx:latest` _as the tag._
 
 ## usage (with distrobox)
 
 Create the distrobox:
 
 ```bash
-distrobox create --pull --image create --image ghcr.io/fossrob/pcoip-bx:latest --name pcoip-bx
+distrobox create --pull --image ghcr.io/fossrob/pcoip-bx:latest --name pcoip-bx
 ```
 
 Or with custom home:
 
 ```bash
-distrobox create --pull --image create --image ghcr.io/fossrob/pcoip-bx:latest --name pcoip-bx --home ~/distroboxes/pcoip-bx
+mkdir -p ~/distroboxes
+distrobox create --pull --image ghcr.io/fossrob/pcoip-bx:latest --name pcoip-bx --home ~/distroboxes/pcoip-bx
 ```
 
-Enter the distrobox:
+Export the pcoip-client application from the distrobox:
 
 ```bash
-distrobox enter pcoip-bx
+distrobox enter pcoip-bx -- distrobox export --app pcoip-client
 ```
 
-Export the pcoip-client application:
-
-```bash
-distrobox-export --app pcoip-client
-```
-
-You should now have an application in your desktop applications list called `PCoIP Client (on pcoip-bx)`.
+After a few seconds you should now have an application in your desktop applications list called `PCoIP Client (on pcoip-bx)`.
 
 ### running manually
 

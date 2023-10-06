@@ -26,8 +26,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        pcoip-version: [ "23.06.2", "23.08.1" ]
-        ubuntu-version: [ "20.04", "22.04" ]
+        pcoip-version:
+          - 23.08.1
+          - 23.06.2
+        ubuntu-version:
+          - 22.04
+          - 20.04
+        include:
+          - pcoip-version: 23.06.2
+            ubuntu-version: 22.04
+            is_latest: true
 
     steps:
       - name: Checkout repository
@@ -38,26 +46,23 @@ jobs:
 
       - name: Build image
         run: |
+
           podman --log-level=error build --format=docker --file Containerfile \
             --build-arg=PCOIP_VERSION=${{ matrix.pcoip-version }} \
             --build-arg=UBUNTU_VERSION=${{ matrix.ubuntu-version }} \
             --tag ${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }}
 
-      - name: Push to registry
-        uses: redhat-actions/push-to-registry@v2
-        with:
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
-          registry: ${{ env.registry }}
-          image: ${{ env.image }}
-          tags:
-            ${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }}
-          extra-args: |
-            --disable-content-trust
-
       - name: Push image
         run: |
-          podman push --quiet ${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }} ${{ env.registry }}/${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }} --disable-content-trust --tls-verify=true
+          podman push --quiet --disable-content-trust --tls-verify=true \
+            ${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }} \
+            ${{ env.registry }}/${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }}
+
+          if [[ "${{ matrix.is_latest }}" == "true" ]]; then
+            podman push --quiet --disable-content-trust --tls-verify=true \
+              ${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }} \
+              ${{ env.image }}:latest
+          fi
 
       - name: Log out of registry
         run: |
