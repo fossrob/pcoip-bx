@@ -61,7 +61,7 @@ jobs:
           if [[ "${{ matrix.is_latest }}" == "true" ]]; then
             podman push --quiet --disable-content-trust --tls-verify=true \
               ${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }} \
-              ${{ env.image }}:latest
+              ${{ env.registry }}/${{ env.image }}:latest
           fi
 
       - name: Log out of registry
