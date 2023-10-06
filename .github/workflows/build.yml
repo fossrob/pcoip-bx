@@ -34,11 +34,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Log in to registry
-        uses: redhat-actions/podman-login@v1
-        with:
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
-          registry: ${{ env.registry }}
+        run: podman login --username ${{ github.actor }} --password ${{ github.token }} ${{ env.registry }}
 
       - name: Build image
         run: |
@@ -59,10 +55,10 @@ jobs:
           extra-args: |
             --disable-content-trust
 
-      # - name: Push image
-      #   run: |
-      #     podman push ${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }} docker://${{ env.registry }}/${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }}
+      - name: Push image
+        run: |
+          podman push --quiet ${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }} ${{ env.registry }}/${{ env.image }}:${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }} --disable-content-trust --tls-verify=true
 
-      # - name: Log out of registry
-      #   run: |
-      #     podman logout ${{ env.registry }}
+      - name: Log out of registry
+        run: |
+          podman logout ${{ env.registry }}
