@@ -19,6 +19,12 @@ Create the distrobox:
 distrobox create --pull --image create --image ghcr.io/fossrob/pcoip-bx:latest --name pcoip-bx
 ```
 
+Or with custom home:
+
+```bash
+distrobox create --pull --image create --image ghcr.io/fossrob/pcoip-bx:latest --name pcoip-bx --home ~/distroboxes/pcoip-bx
+```
+
 Enter the distrobox:
 
 ```bash
