@@ -12,21 +12,37 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: pcoip-bx
+  image: pcoip-bx
+  registry: ghcr.io
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - name: Buildah Build
-        id: image-build
+    strategy:
+      fail-fast: false
+      matrix:
+        pcoip-version: [ "23.06.2", "23.08.1" ]
+        ubuntu-version: [ "20.04", "22.04" ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build image
+        id: image
         uses: redhat-actions/buildah-build@v2
         with:
-          image: ${{ env.IMAGE_NAME }}
-          containerfiles: ./Containerfile
+          containerfiles:
+            Containerfile
+          image: ${{ env.image }}
+          tags: ${{ matrix.pcoip-version }}-${{ matrix.ubuntu-version }}
+          build-args: |
+            PCOIP_VERSION=${{ matrix.pcoip-version }}
+            UBUNTU_VERSION=${{ matrix.ubuntu-version}}
           oci: false
+          extra-args: |
+            --log-level error
 
       - name: Push To Registry
         id: registry-push
