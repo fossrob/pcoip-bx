@@ -11,6 +11,10 @@ on:
     - cron: '0 2 * * MON'  # 02h00 UTC (two hours after) https://github.com/toolbx-images/images
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   image: pcoip-bx
   registry: ghcr.io
