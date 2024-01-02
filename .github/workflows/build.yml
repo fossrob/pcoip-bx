@@ -27,6 +27,7 @@ jobs:
       fail-fast: false
       matrix:
         pcoip-version:
+          - 23.12.2
           - 23.08.1
           - 23.06.2
         ubuntu-version:
